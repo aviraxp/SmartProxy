@@ -24,7 +24,7 @@ public class NatSessionManager {
         long now = System.nanoTime();
         for (int i = Sessions.size() - 1; i >= 0; i--) {
             NatSession session = Sessions.valueAt(i);
-            if (now - session.LastNanoTime > SESSION_TIMEOUT_NS) {
+            if (session != null && now - session.LastNanoTime > SESSION_TIMEOUT_NS) {
                 Sessions.removeAt(i);
             }
         }
